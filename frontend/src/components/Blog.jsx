@@ -63,7 +63,7 @@ export default function Blog() {
                       ? "/category_3"
                       : blog.category === "Corporate News"
                       ? "/category_4"
-                      : blog.category === "Book Insights"
+                      : blog.category === "Book Summary"
                       ? "/category_5"
                       : "/"
                   }
