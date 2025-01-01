@@ -14,13 +14,13 @@ export default function Category_1() {
   // Check if data.blogs exists
   const blogs = data?.blogs || [];
 
-  // Filter blogs by category "Investment Tips"
-  const investmentTipsBlogs = blogs.filter(
-    (blog) => blog.category === "Investment Tips"
+  // Filter blogs by category "Economic Trends"
+  const economicTrendsBlogs = blogs.filter(
+    (blog) => blog.category === "Economic Trends"
   );
 
   // Get the top 5 blogs (if needed, you can sort them based on another criteria like views)
-  const topBlogs = [...investmentTipsBlogs] // Create a shallow copy
+  const topBlogs = [...economicTrendsBlogs] // Create a shallow copy
     .sort((a, b) => {
       const viewsA = Number(a.views); // Convert to number to ensure sorting works
       const viewsB = Number(b.views);

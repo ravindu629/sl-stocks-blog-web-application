@@ -52,10 +52,15 @@ const BlogListScreen = () => {
   return (
     <div className="container my-5">
       <div className="d-flex justify-content-between mb-4">
-        <h2>Blogs</h2>
         <button className="btn btn-primary" onClick={createBlogHandler}>
           Create Blog
         </button>
+        <Link to="/admin/blogList">
+          <h2>Blogs</h2>
+        </Link>
+        <Link to="/admin/sublist">
+          <h2>Subscribers</h2>
+        </Link>
       </div>
 
       {loadingCreate && <Loader />}

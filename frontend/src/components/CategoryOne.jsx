@@ -15,15 +15,15 @@ export default function CategoryOne() {
   // Check if data.blogs exists
   const blogs = data?.blogs || [];
 
-  // Filter blogs by category "Investment Tips"
-  const investmentTipsBlogs = blogs.filter(
-    (blog) => blog.category === "Investment Tips"
+  // Filter blogs by category "Economic Trends"
+  const economicTrendsBlogs = blogs.filter(
+    (blog) => blog.category === "Economic Trends"
   );
 
   // Calculate index of the first and last blog to display
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentBlogs = investmentTipsBlogs.slice(
+  const currentBlogs = economicTrendsBlogs.slice(
     indexOfFirstPost,
     indexOfLastPost
   );
@@ -35,7 +35,7 @@ export default function CategoryOne() {
   const pageNumbers = [];
   for (
     let i = 1;
-    i <= Math.ceil(investmentTipsBlogs.length / postsPerPage);
+    i <= Math.ceil(economicTrendsBlogs.length / postsPerPage);
     i++
   ) {
     pageNumbers.push(i);
@@ -45,12 +45,12 @@ export default function CategoryOne() {
     <section class="blog">
       <div class="container">
         <div class="row">
-          <div className="col-lg-10">
+          <div className="col-lg-12">
             <div className="blog-section-title">
-              <h2>{investmentTipsBlogs[0].category} Blog Articles</h2>
+              <h2>{economicTrendsBlogs[0].category} Blog Articles</h2>
               <p>View the latest news on Blogger</p>
             </div>
-            {investmentTipsBlogs.map((blog) => (
+            {economicTrendsBlogs.map((blog) => (
               <article className="blog-post" key={blog._id}>
                 <div className="blog-post-thumb">
                   <img
@@ -59,7 +59,7 @@ export default function CategoryOne() {
                     style={{
                       width: "100%",
                       height: "auto",
-                      aspectRatio: "1/1",
+                      aspectRatio: "4/3",
                       objectFit: "cover",
                     }}
                   />
@@ -67,12 +67,28 @@ export default function CategoryOne() {
 
                 <div className="blog-post-content">
                   <div className="blog-post-tag">
-                    <a href="">{blog.category}</a>
+                    <Link
+                      to={
+                        blog.category === "Economic Trends"
+                          ? "/category_1"
+                          : blog.category === "Global Markets"
+                          ? "/category_2"
+                          : blog.category === "Stock Insights"
+                          ? "/category_3"
+                          : blog.category === "Corporate News"
+                          ? "/category_4"
+                          : blog.category === "Book Insights"
+                          ? "/category_5"
+                          : "/"
+                      }
+                    >
+                      {blog.category}
+                    </Link>
                   </div>
                   <div className="blog-post-title">
                     <Link to={`/blog/${blog._id}`}>
-                      {blog.title.length > 50
-                        ? `${blog.title.slice(0, 50)}...`
+                      {blog.title.length > 100
+                        ? `${blog.title.slice(0, 100)}...`
                         : blog.title}
                     </Link>
                   </div>
@@ -85,8 +101,8 @@ export default function CategoryOne() {
                     </ul>
                   </div>
                   <p>
-                    {blog.description_1.length > 160
-                      ? `${blog.description_1.slice(0, 160)}...`
+                    {blog.description_1.length > 250
+                      ? `${blog.description_1.slice(0, 250)}...`
                       : blog.description_1}
                   </p>
                   <Link to={`/blog/${blog._id}`} className="blog-post-action">

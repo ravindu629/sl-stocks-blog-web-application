@@ -45,7 +45,7 @@ export default function Latest() {
     <section class="blog">
       <div class="container">
         <div class="row">
-          <div className="col-lg-10">
+          <div className="col-lg-12">
             <div className="blog-section-title">
               <h2>Latest Blog Articles</h2>
               <p>View the latest news on Blogger</p>
@@ -58,7 +58,8 @@ export default function Latest() {
                     alt="blog-thumb"
                     style={{
                       width: "100%",
-                      height: "100%",
+                      height: "auto",
+                      aspectRatio: "4/3",
                       objectFit: "cover",
                     }}
                   />
@@ -66,12 +67,28 @@ export default function Latest() {
 
                 <div className="blog-post-content">
                   <div className="blog-post-tag">
-                    <a href="">{blog.category}</a>
+                    <Link
+                      to={
+                        blog.category === "Economic Trends"
+                          ? "/category_1"
+                          : blog.category === "Global Markets"
+                          ? "/category_2"
+                          : blog.category === "Stock Insights"
+                          ? "/category_3"
+                          : blog.category === "Corporate News"
+                          ? "/category_4"
+                          : blog.category === "Book Insights"
+                          ? "/category_5"
+                          : "/"
+                      }
+                    >
+                      {blog.category}
+                    </Link>
                   </div>
                   <div className="blog-post-title">
                     <Link to={`/blog/${blog._id}`}>
-                      {blog.title.length > 50
-                        ? `${blog.title.slice(0, 50)}...`
+                      {blog.title.length > 100
+                        ? `${blog.title.slice(0, 100)}...`
                         : blog.title}
                     </Link>
                   </div>
@@ -84,8 +101,8 @@ export default function Latest() {
                     </ul>
                   </div>
                   <p>
-                    {blog.description_1.length > 160
-                      ? `${blog.description_1.slice(0, 160)}...`
+                    {blog.description_1.length > 250
+                      ? `${blog.description_1.slice(0, 250)}...`
                       : blog.description_1}
                   </p>
                   <Link to={`/blog/${blog._id}`} className="blog-post-action">

@@ -1,19 +1,19 @@
 import { Link } from "react-router-dom";
-import footerImage_1 from "../assets/images/blog/case-studies-1.png";
-import footerImage_2 from "../assets/images/blog/case-studies-2.png";
-import footerImage_3 from "../assets/images/blog/case-studies-3.png";
-import footerImage_4 from "../assets/images/blog/case-studies-4.png";
-import footerImage_5 from "../assets/images/blog/case-studies-5.png";
-import footerImage_6 from "../assets/images/blog/case-studies-6.png";
+import footerImage_1 from "../assets/images/blog/case-studies-1.jpg";
+import footerImage_2 from "../assets/images/blog/case-studies-2.jpg";
+import footerImage_3 from "../assets/images/blog/case-studies-3.jpg";
+import footerImage_4 from "../assets/images/blog/case-studies-4.jpg";
+import footerImage_5 from "../assets/images/blog/case-studies-5.jpg";
+import footerImage_6 from "../assets/images/blog/case-studies-6.jpg";
 
 const Footer = () => {
   return (
     <>
       <section class="instagram">
         <a href="#">
-          <i class="fa fa-instagram" aria-hidden="true"></i>
+          {/* <i class="fa fa-instagram" aria-hidden="true"></i> */}
 
-          <span>@SL STOCKS</span>
+          <span>SL STOCKS</span>
         </a>
         <div class="container-fluid">
           <div class="row">
@@ -107,7 +107,7 @@ const Footer = () => {
                       Home{" "}
                     </Link>
                   </li>
-                  <li class="nav-item">
+                  {/* <li class="nav-item">
                     <a class="nav-link" href="about.html">
                       About{" "}
                     </a>
@@ -116,10 +116,10 @@ const Footer = () => {
                     <a class="nav-link" href="contact.html">
                       Contact
                     </a>
-                  </li>
+                  </li> */}
                   <li class="nav-item">
                     <Link class="nav-link" to="/login">
-                      Login
+                      Admin
                     </Link>
                   </li>
                 </ul>
@@ -132,6 +132,16 @@ const Footer = () => {
                 <ul>
                   <li>
                     <a href="#">
+                      <i class="fa fa-linkedin"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <i class="fa fa-envelope"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
                       <i class="fa fa-facebook"></i>
                     </a>
                   </li>
@@ -142,7 +152,7 @@ const Footer = () => {
                   </li>
                   <li>
                     <a href="#">
-                      <i class="fa fa-instagram"></i>
+                      <i class="fa fa-whatsapp"></i>
                     </a>
                   </li>
                 </ul>

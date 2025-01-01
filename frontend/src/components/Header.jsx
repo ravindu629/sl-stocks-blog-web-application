@@ -37,7 +37,7 @@ const Header = () => {
                 to="/category_1"
                 style={{ color: "#3E4A5B" }}
               >
-                Investment Tips{" "}
+                Economic Trends{" "}
               </Link>
             </li>
             <li class="nav-item">
@@ -46,7 +46,7 @@ const Header = () => {
                 to="/category_2"
                 style={{ color: "#4C5567" }}
               >
-                Market Trends{" "}
+                Global Markets{" "}
               </Link>
             </li>
             <li class="nav-item">
@@ -64,12 +64,17 @@ const Header = () => {
                 to="/category_4"
                 style={{ color: "#6B7280" }}
               >
-                Trading Basics{" "}
+                Corporate News{" "}
               </Link>
             </li>
+
             <li class="nav-item">
-              <Link class="nav-link" to="/" style={{ color: "#7D8495" }}>
-                Contact{" "}
+              <Link
+                class="nav-link"
+                to="/category_5"
+                style={{ color: "#7D8495" }}
+              >
+                Book Insights{" "}
               </Link>
             </li>
           </ul>

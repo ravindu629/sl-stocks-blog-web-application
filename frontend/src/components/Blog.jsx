@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useGetBlogDetailsQuery } from "../slices/blogApiSlice";
+import { Link } from "react-router-dom";
 
 export default function Blog() {
   const { id: blogId } = useParams();
@@ -51,9 +52,25 @@ export default function Blog() {
           </div>
           <div className="col-lg-10 order-1 order-lg-2">
             <article className="single-blog">
-              <a href="#" className="tag">
-                {blog.category}
-              </a>
+              <div className="blog-post-tag">
+                <Link
+                  to={
+                    blog.category === "Economic Trends"
+                      ? "/category_1"
+                      : blog.category === "Global Markets"
+                      ? "/category_2"
+                      : blog.category === "Stock Insights"
+                      ? "/category_3"
+                      : blog.category === "Corporate News"
+                      ? "/category_4"
+                      : blog.category === "Book Insights"
+                      ? "/category_5"
+                      : "/"
+                  }
+                >
+                  {blog.category}
+                </Link>
+              </div>
               <p className="title">{blog.title}</p>
               <ul className="meta">
                 <li>
@@ -69,7 +86,7 @@ export default function Blog() {
                   height: "auto",
                   aspectRatio: "21/9",
                   objectFit: "cover",
-                  marginLeft: "10px",
+                  marginLeft: "0px",
                 }}
               />
               <p>{blog.description_1}</p>

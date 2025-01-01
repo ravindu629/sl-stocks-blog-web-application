@@ -187,10 +187,11 @@ const BlogEditScreen = () => {
                   onChange={(e) => setCategory(e.target.value)}
                 >
                   <option value="">Select Category</option>
-                  <option value="Market Trends">Market Trends</option>
-                  <option value="Investment Tips">Investment Tips</option>
+                  <option value="Economic Trends">Economic Trends</option>
+                  <option value="Global Markets">Global Markets</option>
                   <option value="Stock Insights">Stock Insights</option>
-                  <option value="Trading Basics">Trading Basics</option>
+                  <option value="Corporate News">Corporate News</option>
+                  <option value="Book Summary">Book Summary</option>
                 </select>
               </div>
               <div class="col-md-12 py-3 text-center">

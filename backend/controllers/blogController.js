@@ -27,12 +27,13 @@ const getBlogById = asyncHandler(async (req, res) => {
 // @access  Private/Admin
 const createBlog = asyncHandler(async (req, res) => {
   const blog = new Blog({
-    title: "Sample name",
+    title: "Economic Trends",
     user: req.user._id,
-    image_1: "https://www.pngall.com/wp-content/uploads/8/Sample-PNG-Image.png",
+    image_1:
+      "https://plus.unsplash.com/premium_photo-1663045262714-9e177b6ac78d?q=80&w=1779&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     description_1: "Sample description 1",
     category: "Market Trends",
-    views: 5,
+    views: 10,
   });
 
   const createdBlog = await blog.save();

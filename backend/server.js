@@ -6,6 +6,7 @@ dotenv.config();
 import connectDB from "./config/db.js";
 import blogRoutes from "./routes/blogRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
+import subscriberRoutes from "./routes/subscriberRoutes.js";
 import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 
 const port = process.env.PORT || 5000;
@@ -23,6 +24,7 @@ app.use(cookieParser());
 
 app.use("/api/blogs", blogRoutes);
 app.use("/api/users", userRoutes);
+app.use("/api/subscribers", subscriberRoutes);
 
 const __dirname = path.resolve();
 

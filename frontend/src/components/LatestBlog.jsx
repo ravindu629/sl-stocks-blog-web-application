@@ -64,7 +64,23 @@ export default function LatestBlog() {
 
           <div className="blog-post-content">
             <div className="blog-post-tag">
-              <a href="">{blog.category}</a>
+              <Link
+                to={
+                  blog.category === "Economic Trends"
+                    ? "/category_1"
+                    : blog.category === "Global Markets"
+                    ? "/category_2"
+                    : blog.category === "Stock Insights"
+                    ? "/category_3"
+                    : blog.category === "Corporate News"
+                    ? "/category_4"
+                    : blog.category === "Book Insights"
+                    ? "/category_5"
+                    : "/"
+                }
+              >
+                {blog.category}
+              </Link>
             </div>
             <div className="blog-post-title">
               <Link to={`/blog/${blog._id}`}>

@@ -27,6 +27,8 @@ import CategoryOne from "./components/CategoryOne";
 import CategoryTwo from "./components/CategoryTwo";
 import CategoryThree from "./components/CategoryThree";
 import CategoryFour from "./components/CategoryFour";
+import CategoryFive from "./components/CategoryFive";
+import SubListScreen from "./screens/admin/SubListScreen";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -39,14 +41,13 @@ const router = createBrowserRouter(
       <Route path="/category_2" element={<CategoryTwo />} />
       <Route path="/category_3" element={<CategoryThree />} />
       <Route path="/category_4" element={<CategoryFour />} />
+      <Route path="/category_5" element={<CategoryFive />} />
 
       {/* Admin users */}
       <Route path="" element={<AdminRoute />}>
         <Route path="/admin/bloglist" element={<BlogListScreen />} />
-        <Route
-          path="/admin/bloglist/:pageNumber"
-          element={<BlogListScreen />}
-        />
+        <Route path="/admin/sublist" element={<SubListScreen />} />
+
         <Route path="/admin/blog/:id/edit" element={<BlogEditScreen />} />
       </Route>
     </Route>

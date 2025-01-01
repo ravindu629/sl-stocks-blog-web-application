@@ -25,7 +25,7 @@ export default function PopularBlogs() {
       const viewsB = Number(b.views);
       return viewsB - viewsA; // Sort by views in descending order
     })
-    .slice(0, 5); // Get the top 6 blogs with the highest views
+    .slice(0, 3); // Get the top 6 blogs with the highest views
 
   return (
     <div class="col-lg-4">

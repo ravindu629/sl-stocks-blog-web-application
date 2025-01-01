@@ -2,12 +2,22 @@ import React, { useState } from "react";
 import LatestBlog from "./LatestBlog";
 import PopularBlogs from "./PopularBlogs";
 import { useGetBlogsQuery } from "../slices/blogApiSlice";
+import { useRegisterSubscriberMutation } from "../slices/subscriberApiSlice";
 import Loader from "./Loader";
 import Message from "./Message";
-import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function HomeTopSection() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+
+  const navigate = useNavigate();
+
   const { data, isLoading, error } = useGetBlogsQuery();
+
+  const [register, { isLoadingRegister }] = useRegisterSubscriberMutation();
 
   if (isLoading) return <Loader />;
   if (error) return <Message variant="danger">{error.data.message}</Message>;
@@ -22,9 +32,29 @@ export default function HomeTopSection() {
 
   let latestBlog = sortedBlogsByDate[0];
 
+  const submitHandler = async (e) => {
+    e.preventDefault();
+
+    try {
+      const res = await register({ name, email, phone }).unwrap();
+      setName("");
+      setEmail("");
+      setPhone("");
+      toast.success("Thank you for subscribing!");
+      navigate("/");
+    } catch (err) {
+      toast.error(err?.data?.message || err.error);
+    }
+  };
+
   return (
     <>
-      <div class="container">
+      <div
+        class="container"
+        style={{
+          marginTop: "40px",
+        }}
+      >
         <div class="row">
           <div class="col-lg-8 col-md-12">
             <article class="featured-post">
@@ -33,11 +63,11 @@ export default function HomeTopSection() {
                   to={`/blog/${latestBlog._id}`}
                   class="featured-post-title"
                 >
-                  <h2>
-                    {latestBlog.title.length > 30
-                      ? `${latestBlog.title.slice(0, 30)}...`
+                  <h3 style={{ fontSize: "2rem" }}>
+                    {latestBlog.title.length > 150
+                      ? `${latestBlog.title.slice(0, 150)}...`
                       : latestBlog.title}
-                  </h2>
+                  </h3>
                 </Link>
                 <ul class="featured-post-meta">
                   <li>
@@ -75,23 +105,53 @@ export default function HomeTopSection() {
           <div class="col-lg-4 col-md-12 mt-4 mt-lg-0">
             <div
               style={{
-                marginTop: "120px",
+                marginBottom: "120px",
+                marginLeft: "15px",
               }}
             >
               <h2 class="text-center">Subscribe to Our Newsletter</h2>
               <form
                 class="row g-3 justify-content-center"
                 action="https://fabform.io/f/9APkcbe"
+                onSubmit={submitHandler}
                 method="post"
               >
+                <div class="col-12">
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    id="emailInput"
+                    required
+                    placeholder="Enter your name"
+                  />{" "}
+                  <br />
+                </div>
                 <div class="col-12">
                   <input
                     type="email"
                     class="form-control"
                     name="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     id="emailInput"
                     required
                     placeholder="Enter your email"
+                  />{" "}
+                  <br />
+                </div>
+                <div class="col-12">
+                  <input
+                    type="number"
+                    class="form-control"
+                    name="phone"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    id="emailInput"
+                    required
+                    placeholder="Enter your contact number"
                   />{" "}
                   <br />
                 </div>
@@ -100,6 +160,7 @@ export default function HomeTopSection() {
                     type="submit"
                     class="btn btn-primary w-100"
                     formtarget="_blank"
+                    disabled={isLoadingRegister}
                   >
                     Subscribe
                   </button>

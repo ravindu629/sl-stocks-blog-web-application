@@ -38,59 +38,68 @@ const LoginScreen = () => {
 
   return (
     <div
-      class="row"
-      style={{
-        paddingLeft: "600px",
-        paddingTop: "50px",
-        paddingBottom: "100px",
-      }}
+      className="row justify-content-center"
+      style={{ margin: 0, padding: "20px" }}
     >
-      <div class="col-lg-5">
-        <div class="contact-form">
-          <h2>Admin Login</h2>
-          <form class="row" onSubmit={submitHandler}>
-            <div class="col-md-12">
+      <div
+        className="col-12 col-md-6"
+        style={{
+          backgroundColor: "#f9f9f9",
+          border: "1px solid #ddd",
+          borderRadius: "8px",
+          padding: "20px",
+        }}
+      >
+        <div className="contact-form">
+          <h2 className="text-center" style={{ marginBottom: "20px" }}>
+            Admin Login
+          </h2>
+          <form className="row" onSubmit={submitHandler}>
+            <div className="col-12" style={{ marginBottom: "15px" }}>
               <input
                 type="email"
-                class="form-control"
+                className="form-control"
                 id="email"
                 placeholder="Enter email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                style={{ padding: "10px" }}
               />
             </div>
-            <div class="col-md-12">
+            <div className="col-12" style={{ marginBottom: "15px" }}>
               <input
                 type="password"
-                class="form-control"
+                className="form-control"
                 id="password"
                 placeholder="Enter password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                style={{ padding: "10px" }}
               />
             </div>
-            <div class="col-md-12">
-              <div class="form-check">
+            <div className="col-12" style={{ marginBottom: "15px" }}>
+              <div className="form-check">
                 <input
-                  class="form-check-input"
+                  className="form-check-input"
                   type="checkbox"
                   id="rememberMe"
                 />
-                <label class="form-check-label" for="rememberMe">
+                <label className="form-check-label" htmlFor="rememberMe">
                   Remember me
                 </label>
               </div>
             </div>
-            <div class="col-lg-12">
-              <button type="submit" class="btn btn-primary">
+            <div className="col-12 text-center">
+              <button
+                type="submit"
+                className="btn btn-primary"
+                style={{ padding: "10px 20px" }}
+              >
                 Sign In
               </button>
             </div>
           </form>
         </div>
-      </div>
-      <div class="col-lg-6">
-        <div id="map"></div>
       </div>
     </div>
   );
