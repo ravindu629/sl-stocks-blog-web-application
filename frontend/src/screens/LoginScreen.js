@@ -24,6 +24,10 @@ const LoginScreen = () => {
     }
   }, [navigate, userInfo]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const submitHandler = async (e) => {
     e.preventDefault();
     try {

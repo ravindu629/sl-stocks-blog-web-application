@@ -1,9 +1,14 @@
 import { useParams } from "react-router-dom";
+import { useEffect } from "react";
 import { useGetBlogDetailsQuery } from "../slices/blogApiSlice";
 import { Link } from "react-router-dom";
 
 export default function Blog() {
   const { id: blogId } = useParams();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const {
     data: blog,

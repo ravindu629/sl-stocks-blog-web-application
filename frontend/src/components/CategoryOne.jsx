@@ -1,10 +1,15 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
 import { useGetBlogsQuery } from "../slices/blogApiSlice";
 import Loader from "./Loader";
 import Message from "./Message";
 import { Link } from "react-router-dom";
 
 export default function CategoryOne() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const { data, isLoading, error } = useGetBlogsQuery();
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 7;

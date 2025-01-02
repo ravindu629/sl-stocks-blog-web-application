@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { LinkContainer } from "react-router-bootstrap";
 import Message from "../../components/Message";
 import Loader from "../../components/Loader";
@@ -17,6 +18,10 @@ const BlogListScreen = () => {
 
   const [currentPage, setCurrentPage] = useState(1);
   const blogsPerPage = 10; // Number of blogs per page
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const deleteHandler = async (id) => {
     if (window.confirm("Are you sure")) {

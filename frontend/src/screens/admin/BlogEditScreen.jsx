@@ -69,6 +69,10 @@ const BlogEditScreen = () => {
     }
   }, [blog]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div
       class="row"
