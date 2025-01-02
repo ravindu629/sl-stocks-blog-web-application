@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-import footerImage_1 from "../assets/images/blog/case-studies-1.jpg";
-import footerImage_2 from "../assets/images/blog/case-studies-2.jpg";
+import footerImage_1 from "../assets/images/blog/case-studies-1.jpeg";
+import footerImage_2 from "../assets/images/blog/case-studies-2.jpeg";
 import footerImage_3 from "../assets/images/blog/case-studies-3.jpg";
-import footerImage_4 from "../assets/images/blog/case-studies-4.jpg";
-import footerImage_5 from "../assets/images/blog/case-studies-5.jpg";
+import footerImage_4 from "../assets/images/blog/case-studies-4.jpeg";
+import footerImage_5 from "../assets/images/blog/case-studies-5.jpeg";
 import footerImage_6 from "../assets/images/blog/case-studies-6.jpg";
 
 const Footer = () => {
