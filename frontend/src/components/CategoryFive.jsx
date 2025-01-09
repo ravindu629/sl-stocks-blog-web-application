@@ -48,8 +48,13 @@ export default function CategoryFive() {
         <div class="row">
           <div className="col-lg-12">
             <div className="blog-section-title">
-              <h2>{bookSummaryBlogs[0].category} Blog Articles</h2>
-              <p>View the latest news on Blogger</p>
+              <h2
+                style={{
+                  color: "#34495E", // Charcoal
+                }}
+              >
+                {bookSummaryBlogs[0].category} Blog Articles
+              </h2>
             </div>
             {bookSummaryBlogs.map((blog) => (
               <article className="blog-post" key={blog._id}>

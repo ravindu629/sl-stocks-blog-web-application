@@ -38,6 +38,9 @@ const blogSchema = mongoose.Schema(
     views: {
       type: Number,
     },
+    download: {
+      type: String,
+    },
   },
   {
     timestamps: true,

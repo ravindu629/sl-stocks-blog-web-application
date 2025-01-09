@@ -34,6 +34,7 @@ const createBlog = asyncHandler(async (req, res) => {
     description_1: "Sample description 1",
     category: "Economic Trends",
     views: 0,
+    download: "/images/sample.jpg",
   });
 
   const createdBlog = await blog.save();
@@ -54,6 +55,7 @@ const updateBlog = asyncHandler(async (req, res) => {
     description_3,
     category,
     views,
+    download,
   } = req.body;
 
   const blog = await Blog.findById(req.params.id);
@@ -68,6 +70,7 @@ const updateBlog = asyncHandler(async (req, res) => {
     blog.description_3 = description_3;
     blog.category = category;
     blog.views = views;
+    blog.download = download;
 
     const updatedBlog = await blog.save();
     res.json(updatedBlog);

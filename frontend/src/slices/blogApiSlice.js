@@ -31,7 +31,13 @@ export const blogSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: ["Blog"],
     }),
-
+    uploadBlogFile: builder.mutation({
+      query: (data) => ({
+        url: `/api/upload`,
+        method: "POST",
+        body: data,
+      }),
+    }),
     deleteBlog: builder.mutation({
       query: (blogId) => ({
         url: `${BLOG_URL}/${blogId}`,
@@ -51,6 +57,7 @@ export const {
   useGetBlogDetailsQuery,
   useCreateBlogMutation,
   useUpdateBlogMutation,
+  useUploadBlogFileMutation,
   useDeleteBlogMutation,
   useGetTopBlogsQuery,
 } = blogSlice;

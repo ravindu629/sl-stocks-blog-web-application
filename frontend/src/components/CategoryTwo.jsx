@@ -52,8 +52,13 @@ export default function CategoryTwo() {
         <div class="row">
           <div className="col-lg-12">
             <div className="blog-section-title">
-              <h2>{globalMarketsBlogs[0].category} Blog Articles</h2>
-              <p>View the latest news on Blogger</p>
+              <h2
+                style={{
+                  color: "#34495E", // Charcoal
+                }}
+              >
+                {globalMarketsBlogs[0].category} Blog Articles
+              </h2>
             </div>
             {globalMarketsBlogs.map((blog) => (
               <article className="blog-post" key={blog._id}>

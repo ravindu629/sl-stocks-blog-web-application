@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import {
   useGetBlogDetailsQuery,
   useUpdateBlogMutation,
+  useUploadBlogFileMutation,
 } from "../../slices/blogApiSlice";
 
 const BlogEditScreen = () => {
@@ -20,6 +21,7 @@ const BlogEditScreen = () => {
   const [image_3, setImage_3] = useState("");
   const [description_3, setDescription_3] = useState("");
   const [views, setViews] = useState(0);
+  const [download, setDownload] = useState("");
 
   const {
     data: blog,
@@ -29,6 +31,9 @@ const BlogEditScreen = () => {
   } = useGetBlogDetailsQuery(blogId);
 
   const [updateBlog, { isLoading: loadingUpdate }] = useUpdateBlogMutation();
+
+  const [uploadBlogFile, { isLoading: loadingUpload }] =
+    useUploadBlogFileMutation();
 
   const navigate = useNavigate();
 
@@ -46,6 +51,7 @@ const BlogEditScreen = () => {
         image_3,
         description_3,
         views,
+        download,
       }).unwrap(); // NOTE: here we need to unwrap the Promise to catch any rejection in our catch block
       toast.success("Blog updated");
       refetch();
@@ -66,8 +72,22 @@ const BlogEditScreen = () => {
       setImage_3(blog.image_3);
       setDescription_3(blog.description_3);
       setViews(blog.views);
+      setDownload(blog.download);
     }
   }, [blog]);
+
+  const uploadFileHandler = async (e) => {
+    const formData = new FormData();
+    formData.append("file", e.target.files[0]); // Update field name to "file" to match backend
+
+    try {
+      const res = await uploadBlogFile(formData).unwrap(); // Assuming `uploadBlogFile` handles the API call
+      toast.success(res.message);
+      setDownload(res.file_path); // Update the state to store the uploaded file's path
+    } catch (err) {
+      toast.error(err?.data?.message || err.error);
+    }
+  };
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -198,6 +218,26 @@ const BlogEditScreen = () => {
                   <option value="Book Summary">Book Summary</option>
                 </select>
               </div>
+              <div class="col-md-12 py-3">
+                <label for="image_1">File URL</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="download"
+                  placeholder="Enter file URL"
+                  value={download}
+                  onChange={(e) => setDownload(e.target.value)}
+                />
+                <input
+                  type="file"
+                  class="form-control mt-2"
+                  id="file_upload"
+                  onChange={uploadFileHandler} // New function for file upload
+                  accept=".jpg,.jpeg,.png,.webp,.txt,.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
+                />
+                {loadingUpload && <Loader />}{" "}
+              </div>
+
               <div class="col-md-12 py-3 text-center">
                 <button type="submit" class="btn btn-primary">
                   Update Blog

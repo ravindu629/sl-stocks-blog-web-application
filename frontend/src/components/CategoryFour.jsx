@@ -52,8 +52,13 @@ export default function CategoryFour() {
         <div class="row">
           <div className="col-lg-12">
             <div className="blog-section-title">
-              <h2>{corporateNewsBlogs[0].category} Blog Articles</h2>
-              <p>View the latest news on Blogger</p>
+              <h2
+                style={{
+                  color: "#34495E", // Charcoal
+                }}
+              >
+                {corporateNewsBlogs[0].category} Blog Articles
+              </h2>
             </div>
             {corporateNewsBlogs.map((blog) => (
               <article className="blog-post" key={blog._id}>

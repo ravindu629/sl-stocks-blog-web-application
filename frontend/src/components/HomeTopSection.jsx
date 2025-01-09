@@ -72,12 +72,21 @@ export default function HomeTopSection() {
                   />
                 </Link>
               </div>
+              <br />
               <Link to={`/blog/${latestBlog._id}`} class="featured-post-title">
-                <h3 style={{ fontSize: "2rem", margin: "15px" }}>
+                <h3
+                  style={{
+                    fontSize: "2rem",
+                    fontSize: "1.5rem",
+                  }}
+                >
                   {latestBlog.title.length > 200
                     ? `${latestBlog.title.slice(0, 200)}...`
                     : latestBlog.title}
                 </h3>
+              </Link>
+              <Link o={`/blog/${latestBlog._id}`} className="blog-post-action">
+                read more <i className="fa fa-angle-right"></i>
               </Link>
             </article>
           </div>

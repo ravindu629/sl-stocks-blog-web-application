@@ -31,7 +31,13 @@ export default function PopularBlogs() {
     <div class="col-lg-4">
       <div class="blog-post-widget">
         <div class="latest-widget-title">
-          <h2>Popular Blogs</h2>
+          <h2
+            style={{
+              color: "#34495E", // Charcoal
+            }}
+          >
+            Popular Blogs
+          </h2>
           <br />
         </div>
         {topBlogs.map((blog) => (

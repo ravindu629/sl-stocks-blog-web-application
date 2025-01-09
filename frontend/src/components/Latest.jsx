@@ -52,8 +52,13 @@ export default function Latest() {
         <div class="row">
           <div className="col-lg-12">
             <div className="blog-section-title">
-              <h2>Latest Blog Articles</h2>
-              <p>View the latest news on Blogger</p>
+              <h2
+                style={{
+                  color: "#34495E", // Charcoal
+                }}
+              >
+                Latest Blog Articles
+              </h2>
             </div>
             {currentBlogs.map((blog) => (
               <article className="blog-post" key={blog._id}>

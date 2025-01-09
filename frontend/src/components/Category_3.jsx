@@ -31,7 +31,13 @@ export default function Category_3() {
   return (
     <div class="blog-post-widget">
       <div class="latest-widget-title">
-        <h2>{topBlogs[0].category}</h2>
+        <h2
+          style={{
+            color: "#34495E", // Charcoal
+          }}
+        >
+          {topBlogs[0].category}
+        </h2>
         <br />
       </div>
       {topBlogs.map((blog) => (

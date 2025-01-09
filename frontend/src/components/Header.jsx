@@ -11,7 +11,7 @@ const Header = () => {
             class="logo-main"
             src={logo}
             alt="logo"
-            style={{ width: "200px", height: "40px", objectFit: "cover" }}
+            style={{ width: "200px", height: "35px", objectFit: "cover" }}
           />
         </Link>
         <button

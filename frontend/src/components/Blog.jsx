@@ -29,6 +29,7 @@ export default function Blog() {
             image_3: blog.image_3,
             description_3: blog.description_3,
             views: updatedViews,
+            download: blog.download,
           }).unwrap();
         } catch (error) {
           console.error("Failed to update views:", error);
@@ -50,7 +51,6 @@ export default function Blog() {
         <div className="row">
           <div className="col-lg-2 order-2 order-lg-1">
             <div className="share-now">
-              {/* <button className="scrol">Share</button> */}
               <p>Share</p>
               <div className="sociel-icon">
                 <ul>
@@ -137,32 +137,6 @@ export default function Blog() {
               />
               <p>{blog.description_2}</p>
               <br />
-              {/* <div className="single-blog-banner">
-                <div className="banner">
-                  <img
-                    src={blog.image_2}
-                    alt={`${blog.title} banner 1`}
-                    style={{
-                      width: "100%",
-                      height: "auto",
-                      aspectRatio: "1/1",
-                      objectFit: "cover",
-                    }}
-                  />
-                </div>
-                <div className="banner">
-                  <img
-                    src={blog.image_3}
-                    alt={`${blog.title} banner 2`}
-                    style={{
-                      width: "100%",
-                      height: "auto",
-                      aspectRatio: "1/1",
-                      objectFit: "cover",
-                    }}
-                  />
-                </div>
-              </div> */}
               <img
                 src={blog.image_3}
                 alt={`${blog.title} image 3`}
@@ -175,6 +149,38 @@ export default function Blog() {
                 }}
               />
               <p>{blog.description_3}</p>
+              {/* Add download button */}
+              {blog.download && (
+                <div
+                  style={{
+                    marginTop: "20px",
+                    textAlign: "center",
+                  }}
+                >
+                  <a
+                    href={`/uploads/${blog.download}`}
+                    download
+                    style={{
+                      textDecoration: "none",
+                    }}
+                  >
+                    <button
+                      style={{
+                        backgroundColor: "#007bff",
+                        color: "white",
+                        padding: "10px 20px",
+                        fontSize: "16px",
+                        cursor: "pointer",
+                        textAlign: "center",
+                        display: "inline-block",
+                        borderRadius: "5px",
+                      }}
+                    >
+                      Download File
+                    </button>
+                  </a>
+                </div>
+              )}
             </article>
           </div>
         </div>
