@@ -45,12 +45,31 @@ export default function Blog() {
   if (error) return <p>Error loading blog details.</p>;
   if (!blog) return <p>No blog found.</p>;
 
+  const getFileType = (fileName) => {
+    const fileExtension = fileName.split(".").pop().toLowerCase();
+
+    if (fileExtension === "txt") return "Download Text File";
+    if (fileExtension === "xlsx") return "Download Excel File";
+    if (fileExtension === "pdf") return "Download PDF Document";
+    return "Download File";
+  };
+
+  const getFileIcon = (fileName) => {
+    const fileExtension = fileName.split(".").pop().toLowerCase();
+
+    if (fileExtension === "txt") return "📝";
+    if (fileExtension === "xlsx") return "📊";
+    if (fileExtension === "pdf") return "📄";
+    return "📁";
+  };
+
   return (
     <section className="blog-single">
       <div className="container">
         <div className="row">
           <div className="col-lg-2 order-2 order-lg-1">
             <div className="share-now">
+              {/* <button className="scrol">Share</button> */}
               <p>Share</p>
               <div className="sociel-icon">
                 <ul>
@@ -122,6 +141,37 @@ export default function Blog() {
                   marginLeft: "0px",
                 }}
               />
+              {blog.download && (
+                <a
+                  href={`${blog.download}`}
+                  download
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    backgroundColor: "#333", // Dark background
+                    color: "#fff", // Light text color
+                    padding: "10px 20px",
+                    borderRadius: "5px",
+                    textDecoration: "none",
+                    fontSize: "16px",
+                    fontWeight: "600",
+                    transition: "background-color 0.3s ease", // Smooth transition on hover
+                  }}
+                  onMouseOver={(e) => {
+                    e.target.style.backgroundColor = "#555"; // Lighter shade on hover
+                  }}
+                  onMouseOut={(e) => {
+                    e.target.style.backgroundColor = "#333"; // Dark shade when not hovered
+                  }}
+                >
+                  <span style={{ marginRight: "8px" }}>
+                    {getFileIcon(blog.download)}
+                  </span>
+                  <span>{getFileType(blog.download)}</span>
+                </a>
+              )}
+              <br />
+              <br />
               <p>{blog.description_1}</p>
               <br />
               <img
@@ -149,38 +199,6 @@ export default function Blog() {
                 }}
               />
               <p>{blog.description_3}</p>
-              {/* Add download button */}
-              {blog.download && (
-                <div
-                  style={{
-                    marginTop: "20px",
-                    textAlign: "center",
-                  }}
-                >
-                  <a
-                    href={`/uploads/${blog.download}`}
-                    download
-                    style={{
-                      textDecoration: "none",
-                    }}
-                  >
-                    <button
-                      style={{
-                        backgroundColor: "#007bff",
-                        color: "white",
-                        padding: "10px 20px",
-                        fontSize: "16px",
-                        cursor: "pointer",
-                        textAlign: "center",
-                        display: "inline-block",
-                        borderRadius: "5px",
-                      }}
-                    >
-                      Download File
-                    </button>
-                  </a>
-                </div>
-              )}
             </article>
           </div>
         </div>

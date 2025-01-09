@@ -85,7 +85,7 @@ export default function HomeTopSection() {
                     : latestBlog.title}
                 </h3>
               </Link>
-              <Link o={`/blog/${latestBlog._id}`} className="blog-post-action">
+              <Link to={`/blog/${latestBlog._id}`} className="blog-post-action">
                 read more <i className="fa fa-angle-right"></i>
               </Link>
             </article>
@@ -99,7 +99,8 @@ export default function HomeTopSection() {
                 padding: "20px",
               }}
             >
-              <h2 class="text-center">Subscribe to Our Newsletter</h2>
+              <h2 class="text-center">Join Our Newsletter</h2>
+
               <form
                 class="row g-3 justify-content-center"
                 action="https://fabform.io/f/9APkcbe"
@@ -151,6 +152,10 @@ export default function HomeTopSection() {
                     class="btn btn-primary w-100"
                     formtarget="_blank"
                     disabled={isLoadingRegister}
+                    style={{
+                      backgroundColor: "#e63946",
+                      borderColor: "#e63946",
+                    }}
                   >
                     Subscribe
                   </button>
