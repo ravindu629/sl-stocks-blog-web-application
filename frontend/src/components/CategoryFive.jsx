@@ -21,9 +21,9 @@ export default function CategoryFive() {
   const blogs = data?.blogs || [];
 
   // Filter blogs by category "Book Summary"
-  const bookSummaryBlogs = blogs.filter(
-    (blog) => blog.category === "Book Summary"
-  );
+  const bookSummaryBlogs = blogs
+    .filter((blog) => blog.category === "Book Summary")
+    .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
   // Calculate index of the first and last blog to display
   const indexOfLastPost = currentPage * postsPerPage;

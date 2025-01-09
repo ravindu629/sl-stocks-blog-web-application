@@ -1,21 +1,44 @@
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
-import { useGetBlogDetailsQuery } from "../slices/blogApiSlice";
+import {
+  useGetBlogDetailsQuery,
+  useUpdateBlogMutation,
+} from "../slices/blogApiSlice";
 import { Link } from "react-router-dom";
 
 export default function Blog() {
   const { id: blogId } = useParams();
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  const { data: blog, isLoading, error } = useGetBlogDetailsQuery(blogId);
 
-  const {
-    data: blog,
-    isLoading,
-    refetch,
-    error,
-  } = useGetBlogDetailsQuery(blogId);
+  const [updateBlog] = useUpdateBlogMutation();
+
+  useEffect(() => {
+    const incrementViews = async () => {
+      if (blog) {
+        const updatedViews = Number(blog.views) + 1;
+        try {
+          await updateBlog({
+            blogId,
+            title: blog.title,
+            category: blog.category,
+            image_1: blog.image_1,
+            description_1: blog.description_1,
+            image_2: blog.image_2,
+            description_2: blog.description_2,
+            image_3: blog.image_3,
+            description_3: blog.description_3,
+            views: updatedViews,
+          }).unwrap();
+        } catch (error) {
+          console.error("Failed to update views:", error);
+        }
+      }
+    };
+
+    incrementViews();
+    window.scrollTo(0, 0); // Scroll to the top when the component mounts
+  }, [blog, blogId, updateBlog]);
 
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error loading blog details.</p>;
@@ -80,23 +103,41 @@ export default function Blog() {
               <ul className="meta">
                 <li>
                   <i className="fa fa-clock-o"></i> &nbsp;
-                  {new Date(blog.createdAt).toLocaleDateString()} - 3 min
+                  {new Date(blog.createdAt).toLocaleDateString()}
+                </li>
+                <li>
+                  &nbsp;&nbsp;
+                  <i className="fa fa-eye"></i> &nbsp;
+                  {blog.views} Views
                 </li>
               </ul>
               <img
                 src={blog.image_1}
-                alt={blog.title}
+                alt={`${blog.title} image 1`}
                 style={{
                   width: "100%",
                   height: "auto",
-                  aspectRatio: "21/9",
+                  aspectRatio: "16/9",
                   objectFit: "cover",
                   marginLeft: "0px",
                 }}
               />
               <p>{blog.description_1}</p>
+              <br />
+              <img
+                src={blog.image_2}
+                alt={`${blog.title} image 2`}
+                style={{
+                  width: "100%",
+                  height: "auto",
+                  aspectRatio: "16/9",
+                  objectFit: "cover",
+                  marginLeft: "0px",
+                }}
+              />
               <p>{blog.description_2}</p>
-              <div className="single-blog-banner">
+              <br />
+              {/* <div className="single-blog-banner">
                 <div className="banner">
                   <img
                     src={blog.image_2}
@@ -121,7 +162,18 @@ export default function Blog() {
                     }}
                   />
                 </div>
-              </div>
+              </div> */}
+              <img
+                src={blog.image_3}
+                alt={`${blog.title} image 3`}
+                style={{
+                  width: "100%",
+                  height: "auto",
+                  aspectRatio: "16/9",
+                  objectFit: "cover",
+                  marginLeft: "0px",
+                }}
+              />
               <p>{blog.description_3}</p>
             </article>
           </div>

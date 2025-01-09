@@ -21,9 +21,9 @@ export default function CategoryTwo() {
   const blogs = data?.blogs || [];
 
   // Filter blogs by category "Global Markets"
-  const globalMarketsBlogs = blogs.filter(
-    (blog) => blog.category === "Global Markets"
-  );
+  const globalMarketsBlogs = blogs
+    .filter((blog) => blog.category === "Global Markets")
+    .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
   // Calculate index of the first and last blog to display
   const indexOfLastPost = currentPage * postsPerPage;

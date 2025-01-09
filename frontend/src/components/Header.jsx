@@ -11,7 +11,7 @@ const Header = () => {
             class="logo-main"
             src={logo}
             alt="logo"
-            style={{ width: "200px", height: "60px", objectFit: "cover" }}
+            style={{ width: "200px", height: "40px", objectFit: "cover" }}
           />
         </Link>
         <button
@@ -25,56 +25,103 @@ const Header = () => {
           <span class="icon-bar"></span>
         </button>
         <div class="collapse navbar-collapse nav-list" id="mainNav">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <Link class="nav-link" to="/latest" style={{ color: "#2A2E35" }}>
-                Latest{" "}
+          <ul className="navbar-nav ml-auto">
+            <li className="nav-item">
+              <Link
+                className="nav-link"
+                to="/latest"
+                style={{
+                  color: "#2A2E35",
+                  fontSize: "1.1rem", // Increased font size
+                  fontWeight: "bold", // Optional: makes the text bold
+                  paddingTop: "20px",
+                }}
+              >
+                Latest Trends{" "}
               </Link>
             </li>
-            <li class="nav-item">
+            <li className="nav-item">
               <Link
-                class="nav-link"
+                className="nav-link"
                 to="/category_1"
-                style={{ color: "#3E4A5B" }}
+                style={{
+                  color: "#3E4A5B",
+                  fontSize: "1.1rem",
+                  fontWeight: "bold",
+                  paddingTop: "20px",
+                }}
               >
-                Economic Trends{" "}
+                Economy{" "}
               </Link>
             </li>
-            <li class="nav-item">
+            <li className="nav-item">
               <Link
-                class="nav-link"
+                className="nav-link"
                 to="/category_2"
-                style={{ color: "#4C5567" }}
+                style={{
+                  color: "#4C5567",
+                  fontSize: "1.1rem",
+                  fontWeight: "bold",
+                  paddingTop: "20px",
+                }}
               >
-                Global Markets{" "}
+                Markets{" "}
               </Link>
             </li>
-            <li class="nav-item">
+            <li className="nav-item">
               <Link
-                class="nav-link"
+                className="nav-link"
                 to="/category_3"
-                style={{ color: "#5A6378" }}
+                style={{
+                  color: "#5A6378",
+                  fontSize: "1.1rem",
+                  fontWeight: "bold",
+                  paddingTop: "20px",
+                }}
               >
-                Stock Insights{" "}
+                Stocks{" "}
               </Link>
             </li>
-            <li class="nav-item">
+            <li className="nav-item">
               <Link
-                class="nav-link"
+                className="nav-link"
                 to="/category_4"
-                style={{ color: "#6B7280" }}
+                style={{
+                  color: "#6B7280",
+                  fontSize: "1.1rem",
+                  fontWeight: "bold",
+                  paddingTop: "20px",
+                }}
               >
-                Corporate News{" "}
+                News{" "}
               </Link>
             </li>
-
-            <li class="nav-item">
+            <li className="nav-item">
               <Link
-                class="nav-link"
+                className="nav-link"
                 to="/category_5"
-                style={{ color: "#7D8495" }}
+                style={{
+                  color: "#7D8495",
+                  fontSize: "1.1rem",
+                  fontWeight: "bold",
+                  paddingTop: "20px",
+                }}
               >
-                Book Insights{" "}
+                Books{" "}
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link
+                className="nav-link"
+                to="/about"
+                style={{
+                  color: "#7D8495",
+                  fontSize: "1.1rem",
+                  fontWeight: "bold",
+                  paddingTop: "20px",
+                }}
+              >
+                About Us{" "}
               </Link>
             </li>
           </ul>

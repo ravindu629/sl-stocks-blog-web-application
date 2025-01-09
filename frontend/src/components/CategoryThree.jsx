@@ -21,9 +21,9 @@ export default function CategoryThree() {
   const blogs = data?.blogs || [];
 
   // Filter blogs by category "Stock Insights"
-  const stockInsightsBlogs = blogs.filter(
-    (blog) => blog.category === "Stock Insights"
-  );
+  const stockInsightsBlogs = blogs
+    .filter((blog) => blog.category === "Stock Insights")
+    .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
   // Calculate index of the first and last blog to display
   const indexOfLastPost = currentPage * postsPerPage;

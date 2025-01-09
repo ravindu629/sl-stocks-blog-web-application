@@ -15,9 +15,9 @@ export default function Category_3() {
   const blogs = data?.blogs || [];
 
   // Filter blogs by category "Stock Insights"
-  const stockInsightsBlogs = blogs.filter(
-    (blog) => blog.category === "Stock Insights"
-  );
+  const stockInsightsBlogs = blogs
+    .filter((blog) => blog.category === "Stock Insights")
+    .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
   // Get the top 5 blogs (if needed, you can sort them based on another criteria like views)
   const topBlogs = [...stockInsightsBlogs] // Create a shallow copy
@@ -44,7 +44,7 @@ export default function Category_3() {
                 style={{
                   width: "100%",
                   height: "auto",
-                  aspectRatio: "1/1",
+                  aspectRatio: "4/3",
                   objectFit: "cover",
                 }}
               />

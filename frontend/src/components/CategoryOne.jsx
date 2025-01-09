@@ -21,9 +21,9 @@ export default function CategoryOne() {
   const blogs = data?.blogs || [];
 
   // Filter blogs by category "Economic Trends"
-  const economicTrendsBlogs = blogs.filter(
-    (blog) => blog.category === "Economic Trends"
-  );
+  const economicTrendsBlogs = blogs
+    .filter((blog) => blog.category === "Economic Trends")
+    .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
   // Calculate index of the first and last blog to display
   const indexOfLastPost = currentPage * postsPerPage;

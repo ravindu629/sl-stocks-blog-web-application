@@ -15,9 +15,9 @@ export default function Category_4() {
   const blogs = data?.blogs || [];
 
   // Filter blogs by category "Corporate News"
-  const corporateNewsBlogs = blogs.filter(
-    (blog) => blog.category === "Corporate News"
-  );
+  const corporateNewsBlogs = blogs
+    .filter((blog) => blog.category === "Corporate News")
+    .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
   // Get the top 5 blogs (if needed, you can sort them based on another criteria like views)
   const topBlogs = [...corporateNewsBlogs] // Create a shallow copy
@@ -44,7 +44,7 @@ export default function Category_4() {
                 style={{
                   width: "100%",
                   height: "auto",
-                  aspectRatio: "1/1",
+                  aspectRatio: "4/3",
                   objectFit: "cover",
                 }}
               />

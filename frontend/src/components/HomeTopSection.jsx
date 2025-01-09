@@ -52,61 +52,42 @@ export default function HomeTopSection() {
       <div
         class="container"
         style={{
-          marginTop: "40px",
+          marginTop: "30px",
         }}
       >
         <div class="row">
           <div class="col-lg-8 col-md-12">
-            <article class="featured-post">
-              <div class="featured-post-content">
-                <Link
-                  to={`/blog/${latestBlog._id}`}
-                  class="featured-post-title"
-                >
-                  <h3 style={{ fontSize: "2rem" }}>
-                    {latestBlog.title.length > 150
-                      ? `${latestBlog.title.slice(0, 150)}...`
-                      : latestBlog.title}
-                  </h3>
-                </Link>
-                <ul class="featured-post-meta">
-                  <li>
-                    <i class="fa fa-clock-o"></i> &nbsp;{" "}
-                    {new Date(latestBlog.createdAt).toLocaleDateString()}
-                  </li>
-                </ul>
-                <br />
-                {/* <p>
-                  {latestBlog.description_1.length > 100
-                    ? `${latestBlog.description_1.slice(0, 100)}...`
-                    : latestBlog.description_1}
-                </p> */}
-                <Link
-                  to={`/blog/${latestBlog._id}`}
-                  className="blog-post-action"
-                >
-                  read more <i className="fa fa-angle-right"></i>
+            <article class="featured-post" style={{ display: "block" }}>
+              <div class="featured-post-thumb" style={{ display: "block" }}>
+                <Link to={`/blog/${latestBlog._id}`}>
+                  <img
+                    src={latestBlog.image_1}
+                    alt="feature-post-thumb"
+                    style={{
+                      width: "100%",
+                      height: "auto",
+                      aspectRatio: "16/9",
+                      objectFit: "cover",
+                    }}
+                  />
                 </Link>
               </div>
-              <div class="featured-post-thumb">
-                <img
-                  src={latestBlog.image_1}
-                  alt="feature-post-thumb"
-                  style={{
-                    width: "100%",
-                    height: "auto",
-                    aspectRatio: "1/1",
-                    objectFit: "cover",
-                  }}
-                />
-              </div>
+              <Link to={`/blog/${latestBlog._id}`} class="featured-post-title">
+                <h3 style={{ fontSize: "2rem", margin: "15px" }}>
+                  {latestBlog.title.length > 200
+                    ? `${latestBlog.title.slice(0, 200)}...`
+                    : latestBlog.title}
+                </h3>
+              </Link>
             </article>
           </div>
           <div class="col-lg-4 col-md-12 mt-4 mt-lg-0">
             <div
               style={{
-                marginBottom: "120px",
-                marginLeft: "15px",
+                border: "1px solid #ddd",
+                borderRadius: "10px",
+                boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+                padding: "20px",
               }}
             >
               <h2 class="text-center">Subscribe to Our Newsletter</h2>
